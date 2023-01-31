@@ -170,10 +170,7 @@ def dis_admin():
     cur=mysql.connection.cursor()
     cur.execute('Select *from admin')
     details=cur.fetchall()
-    cur.execute('select MAX(`id`) from `admin`')
-    max=cur.fetchone()
-    cur.execute('alter table `admin` auto_increment=%s',(max))
-    mysql.connection.commit()
+    
     if details:
         return render_template('display.html',details=details,name='admin')  
     else:
@@ -187,10 +184,7 @@ def dis_animals():
     details=cur.fetchall()
     cur.execute('Select COUNT(*)from animals')
     total=cur.fetchone()
-    cur.execute('select MAX(`id`) from `animals`')
-    max=cur.fetchone()
-    cur.execute('alter table `animals` auto_increment=%s',(max))
-    mysql.connection.commit()
+
     if details:
         return render_template('display.html',details=details,name='animals',total=total)
     else:
@@ -204,11 +198,7 @@ def dis_birds(block):
     details=cur.fetchall()
     cur.execute('Select COUNT(*)from animals where b_id=%s',(block,))
     total=cur.fetchone()
-    print(total)
-    cur.execute('select MAX(`id`) from `animals`')
-    max=cur.fetchone()
-    cur.execute('alter table `animals` auto_increment=%s',(max))
-    mysql.connection.commit()
+   
     if details:
         return render_template('display.html',details=details,name=block,total=total) 
     else:
@@ -222,10 +212,7 @@ def dis_visitors():
     details=cur.fetchall()
     cur.execute('Select SUM(paid),COUNT(name)from visitor')
     total=cur.fetchone()
-    cur.execute('select MAX(`id`) from `visitor`')
-    max=cur.fetchone()
-    cur.execute('alter table `visitor` auto_increment=%s',(max))
-    mysql.connection.commit()
+   
     if details:
         return render_template('display.html',details=details,name='visitor',total=total) 
     else:
@@ -239,10 +226,7 @@ def dis_adoptee():
     cur.execute('Select ad.a_id,ad.name,ad.amount,ad.date_of_adoption,ad.phone_num,ad.an_id,a.name from adoption as ad,animals as a where a.animal_id=ad.an_id')
     details=cur.fetchall() 
     if details:
-        cur.execute('select MAX(`a_id`) from `adoption`')
-        max=cur.fetchone()
-        cur.execute('alter table `adoption` auto_increment=%s',(max))
-        mysql.connection.commit()
+        
         return render_template('display.html',details=details,name='adoptee')  
     else:
         return redirect(url_for('login'))
@@ -255,10 +239,7 @@ def dis_employee():
     cur.execute('Select *from employee')
     details=cur.fetchall()
     if details:
-        cur.execute('select MAX(`e_id`) from `employee`')
-        max=cur.fetchone()
-        cur.execute('alter table `employee` auto_increment=%s',(max))
-        mysql.connection.commit()
+        
         cur.execute('Select COUNT(*)from employee')
         total=cur.fetchone()
         return render_template('display.html',details=details,name='employee',total=total)
@@ -274,11 +255,7 @@ def dis_emp(block):
     print(details)
     cur.execute('Select COUNT(*)from employee where b_id=%s',(block,))
     total=cur.fetchone()
-    print(total)
-    cur.execute('select MAX(`e_id`) from `employee`')
-    max=cur.fetchone()
-    cur.execute('alter table `employee` auto_increment=%s',(max))
-    mysql.connection.commit()
+    
     if details:
         return render_template('display.html',details=details,name='employee',total=total,b=block)
     else:
