@@ -1,0 +1,48 @@
+{% extends "home.html" %}
+{%block title%}content{% endblock%}
+
+{% block content%} 
+
+  <div class="sidebar">
+    <header>DASHBOARD</header>
+    <ul>
+    
+    <li class="ab"><a href="/dis_animals"><p>view all animals</p></a></li>
+    <li class="ab"><a href="/dis_visitors"><p>view all visitors</p></a></li>
+    <li class="ab"><a href="/dis_adoptee"><p>view all adoptee</p></a></li>
+   <li class="ab"> <a href="/dis_employee"><p>view all employees</p></a></li>
+   <li class="ab"><a href="/dis_admin"><p>view admin details</p></a></li>
+   <li class="ab"> <a href="/logout">logout</a></li>
+   
+  </ul> 
+  </div>
+
+
+
+
+  {% with messages=get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <p style="color:red; text-align: center; font-size: larger;">{{message}}</p>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+<H2 style="text-align: center; text-decoration: underline; margin-top: 100px;">INSERT</H2>
+
+<div class="flex-container">
+  
+  <div class="flex-box"><a href="/addadmin">ADD NEW ADMIN TO THE ZOO</a></div>
+  <div class="flex-box"><a href="/addanimals">ADD NEW ANIMALS TO THE ZOO</a></div>
+  <div class="flex-box"><a href="/addvisitor">ADD NEW VISITOR TO THE ZOO</a></div>
+  <div class="flex-box"><a href="/addadoptee">ADD NEW ADOPTER TO THE ZOO</a></div>
+  <div class="flex-box"><a href="/addemployee">ADD NEW EMPLOYEE TO THE ZOO</a></div>
+
+  </div>
+
+
+  
+
+  
+
+{% endblock%}
+

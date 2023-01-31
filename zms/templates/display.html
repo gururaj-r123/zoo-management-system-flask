@@ -1,0 +1,271 @@
+{% extends 'home.html' %}
+{%block title%}admin details{%endblock%}
+{% block content %}
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p style="color:red; text-align: center; font-size: larger;">{{message}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="sidebar">
+    <header>DASHBOARD</header>
+    <ul>
+    
+    <li class="ab"><a href="/dis_animals"><p>view all animals</p></a></li>
+    <li class="ab"><a href="/dis_visitors"><p>view all visitors</p></a></li>
+    <li class="ab"><a href="/dis_adoptee"><p>view all adoptee</p></a></li>
+   <li class="ab"> <a href="/dis_employee"><p>view all employees</p></a></li>
+   <li class="ab"><a href="/dis_admin"><p>view admin details</p></a></li>
+   <li class="ab"> <a href="/logout"> <P> logout </P></a></li>
+  </ul> 
+  </div>
+
+  
+
+
+{% if name=='admin'%}
+<h1 style="text-align: center;">ADMIN DETAILS</h1>
+<div class="t">
+<table border="2px"  class="table table-striped">
+
+    <tr>
+    <th style="color:green">id</th>
+    <th style="color:green">user_id</th>
+    <th style="color:green">name</th>
+<th style="color:green">password</th>
+<th style="color:green">phone</th>
+<th style="color:green">gender</th>
+<th style="color:green">ACTION</th></tr>
+    {%for i in details%}
+    <tr >
+    <td>{{i.0}}</td>
+    <td>{{i.1}}</td>
+    <td>{{i.2}}</td>
+    <td>{{i.3}}</td>
+    <td>{{i.4}}</td>
+    <td>{{i.5}}</td>
+    <td>
+        <a href="/update_admin/{{i.0}}" class="btn btn-warning btn-xs">Edit</a>
+        <a href="/delete/{{i.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">delete</a>
+    
+    </td>
+    </tr>
+    {%endfor%}
+
+</div>
+{% endif %}
+
+
+{% if name=='animals' or name=='1' or name=='2'or name=='3'or name=='4'or name=='5'or name=='6'%}
+<div class="sidebarRIGHT">
+    <header>BLOCK</header>
+    <ul>
+     
+    <li class="ab"><a href="/dis_block/1"><p>1.BIRDS</p></a></li>
+    <li class="ab"><a href="/dis_block/2"><p>2.CARNIVORE</p></a></li>
+    <li class="ab"><a href="/dis_block/3"><p>3.PRIMATES</p></a></li>
+    <li class="ab"><a href="/dis_block/4"><p>4.REPTILES</p></a></li>
+   <li class="ab"> <a href="/dis_block/5"><p>5.HERBIVORES</p></a></li>
+   <li class="ab"> <a href="/dis_block/6"> <P>6.OMNIVORES</P> </a></li>
+   <li class="ab"><a href="/dis_animals"><p>ALL ANIMALS</p></a></li>
+  </ul> 
+  </div>
+    {% if name=='animals' %}
+<h1 style="text-align: center;">ANIMAL DETAILS</h1>
+<h3 style="text-align: center; font-style: italic;">(total num of all animals=<span style="color: red;">{{total.0}}</span>)</h3>
+<div class="t">
+    {% endif %}
+    {% if name=='1' %}
+    <h1 style="text-align: center;">BIRDS</h1> 
+    <h3 style="text-align: center; font-style: italic;">(total num of birds=<span style="color: red;">{{total.0}}</span>)</h3>
+    <div class="t">
+        {% endif %}
+        {% if name=='2' %}
+        <h1 style="text-align: center;">CARNIVORES</h1>
+        <h3 style="text-align: center; font-style: italic;">(total num of carnivore=<span style="color: red;">{{total.0}}</span>)</h3>
+        <div class="t">
+            {% endif %}
+            {% if name=='3' %}
+            <h1 style="text-align: center;">PRIMATES</h1>
+            <h3 style="text-align: center; font-style: italic;">(total num of primates=<span style="color: red;">{{total.0}}</span>)</h3>
+            <div class="t">
+                {% endif %}
+                {% if name=='4' %}
+                <h1 style="text-align: center;">REPTILES</h1>
+                <h3 style="text-align: center; font-style: italic;">(total num of reptiles=<span style="color: red;">{{total.0}}</span>)</h3>
+                <div class="t">
+                    {% endif %}
+                    {% if name=='5' %}
+                <h1 style="text-align: center;">HERBIVORES</h1>
+                <h3 style="text-align: center; font-style: italic;">(total num of herbivores=<span style="color: red;">{{total.0}}</span>)</h3>
+                <div class="t">
+                    {% endif %}
+                    {% if name=='6' %}
+                <h1 style="text-align: center;">OMNIVORES</h1>
+                <h3 style="text-align: center; font-style: italic;">(total num of omnivores=<span style="color: red;">{{total.0}}</span>)</h3>
+                <div class="t">
+                    {% endif %}
+<table border="2px" class="table table-striped">
+    <tr>
+        <th style="color:green">id</th>
+        <th style="color:green">animal_id</th>
+        <th style="color:green">name</th>
+    <th style="color:green">gender</th>
+    <th style="color:green">date_of_join</th>
+    <th style="color:green">b_id</th>
+    <th style="color:green">ACTION</th>
+    </tr>
+
+    {%for i in details%}
+    
+    <tr >
+    <td>{{i.1}}</td>
+     <td>{{i.0}}</td>
+     <td>{{i.2}}</td>
+     <td>{{i.3}}</td>
+     <td>{{i.4}}</td>
+     <td>{{i.5}}</td>
+     
+    <td>
+        <a href="/update_animals/{{i.1}}" class="btn btn-warning btn-xs">Edit</a>
+        <a href="/animals_delete/{{i.1}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">delete</a>
+    
+    </td>
+    </tr>
+    {%endfor%}
+</div>
+{% endif %}
+
+{% if name=='visitor'%}
+<div class="t">
+<h1 style="text-align: center;">VISITOR DETAILS</h1>
+<h3 style="text-align: center; font-style: italic;">(total visitors=<span style="color: red;">{{total.1}}</span>/ amount collected=<span style="color: red;">{{total.0}}</span>)</h3>
+<table border="2px" class="table table-striped">
+    <tr>
+        <th style="color:green">id</th>
+        <th style="color:green">name</th>
+        <th style="color:green">gender</th>
+    <th style="color:green">age</th>
+    <th style="color:green">PHONE_NUMBER</th>
+    <th style="color:green">DATE_OF_VISIT</th>
+    <th style="color:green">paid</th>
+
+
+    <th style="color:green">ACTION</th>
+    </tr>
+    
+    {%for i in details%}
+    <tr >
+       <td>{{i.0}}</td>
+       <td>{{i.1}}</td>
+       <td>{{i.2}}</td>
+       <td>{{i.3}}</td>
+       <td>{{i.4}}</td>
+       <td>{{i.5}}</td>
+       <td>{{i.6}}</td>
+    <td>
+        <a href="/update_visitor/{{i.0}}" class="btn btn-warning btn-xs">Edit</a>
+        <a href="/vi_delete/{{i.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">delete</a>
+    
+    </td>
+    </tr>
+    {%endfor%}
+</div>
+{% endif %}
+
+
+{% if name=='adoptee'%}
+
+<h1 style="text-align: center;">ADOPTEE DETAILS</h1>
+<div class="t">
+<table border="2px" class="table table-striped">
+    <tr>
+        <th style="color:green">id</th>
+        <th style="color:green">name</th>
+        <th style="color:green">amount</th>
+    <th style="color:green">DATE_OF_ADOPTION</th>
+    <th style="color:green">PHONE_NUMBER</th>
+    <th style="color:green">ANIMAL_ID</th>
+    <th style="color:green">ANIMAL NAME</th>
+    <th style="color:green">ACTION</th>
+    </tr>
+    {%for i in details%}
+    <tr >
+    <td>{{i.0}}</td>
+    <td>{{i.1}}</td>
+    <td>{{i.2}}</td>
+    <td>{{i.3}}</td>
+    <td>{{i.4}}</td>
+    <td>{{i.5}}</td>
+    <td>{{i.6}}</td>
+    <td>
+        <a href="/update_adoptee/{{i.0}}" class="btn btn-warning btn-xs">Edit</a>
+        <a href="/adoptee_delete/{{i.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">delete</a>
+    
+    </td>
+    </tr>
+    
+    {%endfor%}
+</div>
+{% endif %}
+
+
+{% if name=='employee' %}
+<div class="sidebarRIGHT">
+    <header>WORKS IN</header>
+    <ul style="list-style: none;">
+     
+    <li class="ab"><a href="/dis_blockemp/1"><p>BLOCK-1</p></a></li>
+    <li class="ab"><a href="/dis_blockemp/2"><p>BLOCK-2</p></a></li>
+    <li class="ab"><a href="/dis_blockemp/3"><p>BLOCK-3</p></a></li>
+    <li class="ab"><a href="/dis_blockemp/4"><p>BLOCK-4</p></a></li>
+   <li class="ab"> <a href="/dis_blockemp/5"><p>BLOCK-5</p></a></li>
+   <li class="ab"> <a href="/dis_blockemp/6"> <P>BLOCK-6</P> </a></li>
+   <li class="ab"><a href="/dis_employee"><p>ALL EMPLOYEES</p></a></li>
+  </ul> 
+  </div>
+<h1 style="text-align: center;">EMPLOYEE DETAILS</h1>
+{% if b=='1'or b=='2'or b=='3' or b=='4' or b=='5' or b=='6'  %}
+ <h3 style="text-align: center; font-style: italic;">BLOCK-{{b}}(total num=<span style="color: red;">{{total.0}}</span>)</h3>
+ {% endif %}
+ {% if b!='1'or b!='2'or b!='3' or b!='4' or b!='5' or b!='6'  %}
+ <h3 style="text-align: center; font-style: italic;">(total num=<span style="color: red;">{{total.0}}</span>)</h3>
+ {% endif %}
+<div class="t">
+<table border="2px" class="table table-striped">
+    <tr>
+        <th style="color:green">id</th>
+        <th style="color:green">name</th>
+        <th style="color:green">salary</th>
+    <th style="color:green">age</th>
+    <th style="color:green">block_id</th>
+    <th style="color:green">date_of_join</th>
+    
+    <th style="color:green">ACTION</th>
+    </tr>
+    
+    {%for i in details%}
+    <tr >
+      <td>{{i.0}}</td>
+      <td>{{i.1}}</td>
+      <td>{{i.2}}</td>
+      <td>{{i.3}}</td>
+      <td>{{i.4}}</td>
+      <td>{{i.5}}</td>
+      <td>
+        <a href="/update_employee/{{i.0}}" class="btn btn-warning btn-xs">Edit</a>
+        <a href="/emp_delete/{{i.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">delete</a>
+    
+    </td>
+    </tr>
+
+    {%endfor%}
+   
+</div>
+{% endif %}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link  href="{{url_for('static', filename='all.css')}}" rel="stylesheet">
+    <title>{%block title %}home{% endblock %}</title>
+</head>
+<body>
+          <nav class="navbar " style="background-color:aliceblue; " >
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+               <img src="static\75395208._SX318_.jpg" alt="" style="width: 70px; height: 60px; margin: 0 auto auto 0;">
+            <span style="font-size: 30px; text-decoration: solid ;">ZOO MANAGEMENT SYSTEM</span>
+              
+            </a>
+          </div>
+        </nav>
+
+
+        <ul class="nav nav-tabs nav-fill  " style="background: #063146;">
+          <li class="nav-item " >
+            <a class="nav-link " aria-current="page" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/login">ADMIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/animals">ANIMAL PHOTOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/info">INFO</a>
+          </li>
+        </ul>
+     
+  
+    
+
+    {% block content %}
+    <div class="home_img"  >
+      
+     <img class="animal1" src="static\7dada9cc4e_50158477_wild-zoo-pont-scorff.jpg" alt="" height="500px" width="100%">
+     
+     <p class="quote">The greatness of a nation can be judged by the way its animals are <b style="text-decoration: underline;">Mahatma Gandhi</b> .</p>
+      
+      
+    </div>
+  
+     
+    
+    
+    {% endblock %}
+
+    {% block bottom %}
+    {% endblock %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+   
+</body>
+</html>

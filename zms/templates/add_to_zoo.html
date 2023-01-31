@@ -1,0 +1,254 @@
+{%  extends 'home.html' %}
+{%block title %}add{% endblock %}
+{% block content %}
+{% with messages=get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <p style="color:red; text-align: center; font-size: larger;">{{message}}</p>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <button style="margin-left:0; width: 80px; height: 50px;"><a href="/login">BACK</a></button>
+{%  if name=='admin' %}
+
+<div class="login-box">
+    <h1>ADD NEW ADMIN</h1>
+<form action="/addadmin" method="POST">
+<div class="mb-3">
+<label for="user_id">USER_ID</label>
+<input type="text" name="user_id" class="form-control" required="1">
+</div>
+
+
+<div class="mb-3">
+<label for="password">PASSWORD</label>
+<input type="password" name="password" class="form-control" required="1">
+</div>
+<div class="mb-3">
+<label for="name">NAME</label>
+<input type="text" name="name" class="form-control" required="1">
+</div> 
+
+<div class="mb-3">
+<label for="phone">PHONE_NUMBER</label>
+<input type="text" name="phone" class="form-control" required="1">
+</div>
+
+<div class="mb-3">
+
+<h5 style="text-decoration: underline;">Gender</h5>
+<label for="male">MALE</label>
+<input type="radio" name="gender" id="male" value="MALE" required="1">
+<label for="female">FEMALE</label>
+<input type="radio" name="gender" id="female" value="FEMALE" required="1">
+<label for="">OTHER</label>
+<input type="radio" name="gender" id="other" value="OTHER" required="1">
+</div>
+<div class="mb-3">
+<input type="submit" value="SUBMIT" class="btn">
+</div>
+</form>
+</div>
+
+
+
+{% endif%}
+
+{%  if name=='animals' %}
+<div class="login-box">
+<h1>ADD ANIMALS</h1>
+<form action="/addanimals" method="POST">
+    <div>
+    <label for="unq_id">ENTER ANIMAL ID</label>
+    <input type="text" name="unq_id" id="" class="form-control" required="1">
+</div>
+
+<div>
+    <label for="name">ENTER NAME OF THE ANIMAL</label>
+    <input type="text" name="name" class="form-control" required="1">
+</div>
+ <div>
+    <p style="text-decoration: underline;">GENDER</p>
+    <input type="radio" name="gender" id="male" value="MALE" required="1">
+    <label for="male" >MALE</label>
+    
+    <input type="radio" name="gender" id="female" value="FEMALE" required="1">
+    <label for="female">FEMALE</label>
+    
+    <input type="radio" name="gender" id="other" value="OTHER" required="1">
+    <label for="other">OTHER</label>
+    
+</div>
+<br>
+
+<div>
+
+    <label for="date">ENTER DATE OF JOINING TO ZOO</label>
+    <input type="date" name="date" id="" class="form-control" required="1">
+</div>
+
+<div>
+    
+    <p style="text-decoration: underline;">SELECT THE BLOCK</p>
+    <input type="radio" name="block" id="1" value="1" required="1">
+    <label for="1">BLOCK-1(BIRDS)</label>
+    <input type="radio" name="block" id="2" value="2" required="1">
+    <label for="2">BLOCK-2(CARNIVORE)</label>
+    <br>
+    <input type="radio" name="block" id="3" value="3" required="1">
+    <label for="3">BLOCK-3(PRIMATES)</label>
+    <input type="radio" name="block" id="4" value="4" required="1">
+    <label for="4">BLOCK-4(REPTILES)</label>
+    <br>
+    <input type="radio" name="block" id="5" value="5" required="1">
+    <label for="5">BLOCK-5(HERBIVORES)</label>
+    <input type="radio" name="block" id="6" value="6">
+    <label for="6">BLOCK-6(OMNIVORES)</label>
+    
+</div>
+    
+    <input type="submit" name="SUBMIT" id="" class="btn">
+    
+
+</form>
+</div>
+
+{% endif%}
+
+
+{%  if name=='visitor' %}
+<div class="login-box">
+    <h1>ADD VISITOR</h1>
+
+<form action="/addvisitor" method="POST">
+    <div>
+    <label for="name">NAME</label>
+    <input type="text" name="name"  class="form-control" required="1" >
+</div>
+<div>
+    <p style="margin-bottom: 0; font-size: larger; text-decoration: underline solid;">Gender</p>
+    <label for="male">MALE</label>
+    <input type="radio" name="gender" id="male" value="MALE" required="1">
+
+
+    <label for="female">FEMALE</label>
+    <input type="radio" name="gender" id="female" value="FEMALE" required="1">
+
+
+    <label for="other">OTHER</label>
+    <input type="radio" name="gender" id="other" value="OTHER" required="1">
+</div>
+<br>
+<div>
+    <label for="age">AGE</label>
+    <input type="number" name="age"  class="form-control" required="1">
+</div>
+<div>
+    <label for="phone">PHONE_NUMBER</label>
+    <input type="number" name="phone" id=""  class="form-control" required="1">
+</div>
+<div>
+    <label for="date">DATE_OF_VISIT</label>
+    <input type="date" name="date" id=""  class="form-control" required="1">
+</div>
+<div>
+    <p style="margin-bottom: 0; font-size: larger; text-decoration: underline solid;">ENTRY FEE</p>
+    <label for="100">ADULT(100RS)</label>
+    <input type="radio" name="amount" id="100" value="100" required="1">
+    <br>
+    <label for="50">CHILD(50RS)</label>
+    <input type="radio" name="amount" id="50" value="50" required="1">
+</div>
+    <input type="submit" value="SUBMIT" class="btn">
+
+</form>
+</div>
+
+{% endif%}
+
+
+{%  if name=='adoptee' %}
+<div class="login-box">
+    <h1>ADD ADOPTEES</h1>
+<form action="/addadoptee" method="POST">
+    <div>
+    <label for="name">NAME</label>
+    <input type="text" name="name"  class="form-control" required="1">
+</div>
+<div>
+    <label for="amount">AMOUNT_PAID</label>
+    <input type="text" name="amount" id=""  class="form-control" required="1">
+</div>
+<div>
+    <label for="date">DATE_OF_ADOPTION</label>
+    <input type="date" name="date" id=""  class="form-control" required="1">
+</div>
+<div>
+    <label for="phone">PHONE_NUMBER</label>
+    <input type="number" name="phone" id=""  class="form-control" required="1">
+</div>
+<div>
+    <label for="unq_id">ENTER THE ID OF ANIMAL YOU ADOPTED</label>
+    <input type="text" name="unq_id" id=""  class="form-control" required="1">
+</div>
+    <input type="submit" name="SUBMIT" id="" class="btn">
+    
+    {{msg}}
+
+
+</form>
+</div>
+
+{% endif%}
+
+{%  if name=='employee' %}
+<div class="login-box">
+    <h1>ADD EMPLOYEE</h1>
+<form action="/addemployee" method="POST">
+    <label for="name">NAME</label>
+    <input type="text" name="name" class="form-control">
+    <label for="amount">AMOUNT_PAID</label>
+    <input type="text" name="amount" id="" class="form-control">
+    <label for="age">AGE</label>
+    <input type="number" name="age" class="form-control">
+    <div style="margin-bottom: 10px;">
+    <p style="margin-bottom: 5PX; font-size: larger;">SELECT THE BLOCK</p>
+    <input type="radio" name="block" id="1" value="1" required="1">
+    <label for="1">BLOCK-1(BIRDS)</label>
+    <input type="radio" name="block" id="2" value="2" required="1">
+    <label for="2">BLOCK-2(CARNIVORE)</label>
+    <br>
+
+    <input type="radio" name="block" id="3" value="3"required="1">
+    <label for="3">BLOCK-3(PRIMATES)</label>
+    <input type="radio" name="block" id="4" value="4" required="1">
+    <label for="4">BLOCK-4(REPTILES)</label>
+    
+    <br>
+    <input type="radio" name="block" id="5" value="5"required="1">
+    <label for="5">BLOCK-5(HERBIVORES)</label>
+    <input type="radio" name="block" id="6" value="6"required="1">
+    <label for="6">BLOCK-6(OMNIVORES)</label>
+    
+</div>
+
+    <div>
+    <label for="date">DATE_OF_JOINING</label>
+    <input type="date" name="date" id="" class="form-control">
+</div>
+    <input type="submit" name="" id="" value="SUBMIT"  class="btn">
+
+</form>
+</div>
+
+{% endif%}
+
+
+
+
+
+
+
+{% endblock %}
+
+
