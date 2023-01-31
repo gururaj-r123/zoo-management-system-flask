@@ -77,3 +77,11 @@ CREATE TABLE `employee` (
 insert into admin(user_id,name,password,phone_num,gender) values('guru123','GURURAJ','9844',8971260336,'MALE')
 
 
+insert into block values(1,'BIRDS');
+insert into block values(2,'CARNIVORE');
+insert into block values(3,'PRIMATES');
+insert into block values(1,'REPTILES');
+insert into block values(1,'HERBIVORES');
+insert into block values(1,'OMNIVORES');
+
+
